@@ -21,7 +21,7 @@ object MaxTemperature {
     Logger.getLogger("org").setLevel(Level.ERROR)
 
     // Vytvoření nového Spark contextu
-    val sc = new SparkContext("local[*]", "CustomerTotalSpent")
+    val sc = new SparkContext("local[*]", "MaxTemperature")
 
     // Vytvoření RDD z textového souboru.
     val data = sc.textFile("data/weather-ww2.csv")
