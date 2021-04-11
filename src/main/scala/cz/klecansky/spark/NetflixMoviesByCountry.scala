@@ -22,7 +22,7 @@ object NetflixMoviesByCountry {
     Logger.getLogger("org").setLevel(Level.ERROR)
 
     // Vytvoření SparkSession
-    val spark = SparkSession.builder().appName("PopularMovies").master("local[*]").getOrCreate()
+    val spark = SparkSession.builder().appName("NetflixMovies").master("local[*]").getOrCreate()
 
     // Načtení filmů jako dataframe
     val netflix = spark.read.option("header", true).option("inferSchema", true).csv("data/netflix_titles.csv")
