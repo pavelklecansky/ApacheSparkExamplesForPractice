@@ -8,7 +8,8 @@ import org.apache.spark.sql.types.{IntegerType, LongType, StructType}
 /**
  * <h2> Oblíbenost filmů </h2>
  * <b>Úkol:</b> Pomocí csv souboru u.data
- * seřadit a vypsat filmy podle oblíbenosti.
+ * seřadit a vypsat filmy podle oblíbenosti. Použijte pomocné
+ * metody na datasetu.
  *
  * <b>Typ úkolu:</b> SparkSQL
  *
