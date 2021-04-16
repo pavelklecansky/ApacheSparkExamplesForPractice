@@ -38,7 +38,7 @@ object MaxTemperature {
       (station, temperature)
     })
 
-    // Vypočet maximální teploty pro jednotlivé stanice.
+    // Výpočet maximální teploty pro jednotlivé stanice.
     val maxTempsByStation = weatherFromWW.reduceByKey((x, y) => max(x, y))
 
     // Převedení RDD na kolekci.

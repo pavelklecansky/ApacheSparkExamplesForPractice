@@ -33,7 +33,7 @@ object CountRatings {
     // Vytvoření RDD počtu jednotlivých hodnocení ve formátu (hodnota hodnocení, počet hodnocení)
     val results = ratings.countByValue()
 
-    // Vrátit sequance a seřezení podle hodnocení
+    // Vrátit sequence a seřezení podle hodnocení
     val sortedResults = results.toSeq.sortBy(_._1);
 
     // Výpis do konzole

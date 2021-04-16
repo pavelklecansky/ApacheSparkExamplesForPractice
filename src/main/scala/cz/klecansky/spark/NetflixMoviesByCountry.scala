@@ -27,13 +27,13 @@ object NetflixMoviesByCountry {
     // Načtení filmů jako dataframe
     val netflix = spark.read.option("header", true).option("inferSchema", true).csv("data/netflix_titles.csv")
 
-    // Vytvoření dočasného view pro použití v SparkSql
+    // Vytvoření dočasného view pro možnost použití SQL dotazů
     netflix.createOrReplaceTempView("netflix")
 
     // Sečtení filmů podle země výroby.
     val numberOfMoviesByCountry = spark.sql("SELECT country, count(*) as count from netflix GROUP BY country ORDER BY count DESC")
 
-    // Zobrazení 20 zemí s nejvíc filmů na netflixu.
+    // Zobrazení 20 zemí kde netflix vytvořil nejvíce pořadů
     numberOfMoviesByCountry.show()
 
     // Zastavení SparkSession

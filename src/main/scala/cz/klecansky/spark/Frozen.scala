@@ -9,9 +9,9 @@ import org.apache.spark.graphx._
  * <b>Úkol:</b> Máte již vytvoření graf postav z ledového království a mezi nimi vytvořené základní vztahy.
  * Vaším úkolem je vytvořit nový modifikovaný graf který vychází z původního grafu.
  * <ul>
- * <li>Změntě Elsu z člověka na superhrdinu</li>
- * <li>Změntě vztah Anny k Hansovy na nepřátelé</li>
- * <li>Změntě vztah Anny k Kristoffovi na milenci</li>
+ * <li>Změnte Elsu z člověka na superhrdinu</li>
+ * <li>Změnte vztah Anny k Hansovy na nepřátelé</li>
+ * <li>Změnte vztah Anny k Kristoffovi na milenci</li>
  * </ul>
  *
  * <b>Typ úkolu:</b> GraphX
