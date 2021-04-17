@@ -19,19 +19,5 @@ object BookAuthorsCounter {
     // Změna na error jinak Spark při spuštění vypisuje obrovské množství info logů.
     Logger.getLogger("org").setLevel(Level.ERROR)
 
-    // Vytvoření SparkSession
-    val spark = SparkSession.builder().appName("PopularMovies").master("local[*]").getOrCreate()
-
-    // Načtení knih jako dataframe
-    val books = spark.read.option("header", true).option("inferSchema", true).csv("data/books.csv")
-
-    // Sečtení nejproduktivnějších autorů s průmerným hodnocení knih nad 4.5
-    val autherCount = books.filter(books("average_rating") > 4.5).groupBy("authors").count().orderBy(desc("count"))
-
-    // Zobrazení 50 nejproduktivnějších autorů
-    autherCount.show(50)
-
-    // Zastavení SparkSession
-    spark.stop()
   }
 }

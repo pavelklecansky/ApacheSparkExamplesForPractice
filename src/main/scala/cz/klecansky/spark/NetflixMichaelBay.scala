@@ -16,30 +16,9 @@ import org.apache.spark.sql.functions._
  * */
 object NetflixMichaelBay {
 
-  // Vytvoření třídy Movie
-  case class Movie(show_id: String, show_type: String, title: String, director: String, cast: String, country: String, date_added: String, release_year: String, rating: String, duration: String, listed_in: String, description: String)
-
   def main(args: Array[String]): Unit = {
     // Změna na error jinak Spark při spuštění vypisuje obrovské množství info logů.
     Logger.getLogger("org").setLevel(Level.ERROR)
 
-    // Vytvoření SparkSession
-    val spark = SparkSession.builder().appName("NetflixMichaelBay").master("local[*]").getOrCreate()
-
-    // Načtení filmů jako dataset
-    import spark.implicits._
-    val netflix = spark.read.option("header", true).option("inferSchema", true).csv("data/netflix_titles.csv").as[Movie]
-
-    // Filtrovat pouze filmy které režíroval Michael Bay
-    val michaelBayMovies = netflix.filter(movie => movie.director == "Michael Bay")
-
-    // Vrátit délku jednotlivých filmů jako číslo
-    val michaelBayMoviesDuration = michaelBayMovies.map(movie => movie.duration.replaceAll(" min", "").toInt)
-
-    // Zjištění průměrné délky filmů
-    val averageDuration = michaelBayMoviesDuration.select(avg("value"))
-
-    // Vypsání do konsole
-    println(averageDuration.first())
   }
 }

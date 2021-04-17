@@ -20,31 +20,5 @@ object MaxTemperature {
     // Změna na error jinak Spark při spuštění vypisuje obrovské množství info logů.
     Logger.getLogger("org").setLevel(Level.ERROR)
 
-    // Vytvoření nového Spark contextu
-    val sc = new SparkContext("local[*]", "MaxTemperature")
-
-    // Vytvoření RDD z textového souboru.
-    val data = sc.textFile("data/weather-ww2.csv")
-
-    // Uložení hlavičky pro pozdější filtraci.
-    val header = data.first()
-
-    // Vytvoření nového RDD bez hlavičky
-    // Vytvoření nového RDD ve formátu (označení stanice, maximální naměřená hodnota v určitém dnu)
-    val weatherFromWW = data.filter(row => row != header).map(line => {
-      val split = line.split(",")
-      val station = split(0)
-      val temperature = split(4).toFloat
-      (station, temperature)
-    })
-
-    // Výpočet maximální teploty pro jednotlivé stanice.
-    val maxTempsByStation = weatherFromWW.reduceByKey((x, y) => max(x, y))
-
-    // Převedení RDD na kolekci.
-    val results = maxTempsByStation.collect()
-
-    // Výpis do konzole
-    results.foreach(println)
   }
 }

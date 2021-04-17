@@ -19,25 +19,5 @@ object CustomerTotalSpent {
     // Změna na error jinak Spark při spuštění vypisuje obrovské množství info logů.
     Logger.getLogger("org").setLevel(Level.ERROR)
 
-    // Vytvoření nového Spark contextu
-    val sc = new SparkContext("local[*]", "CustomerTotalSpent")
-
-    // Vytvoření RDD z textového souboru.
-    val data = sc.textFile("data/customer-orders.csv")
-
-    // Vytvoření nového RDD ve formátu (id uživatele, částka)
-    val orders = data.map(line => {
-      val split = line.split(",")
-      (split(0).toInt, split(2).toFloat)
-    })
-
-    // Sečtení částek podlé id uživatele.
-    val customerTotalSpent = orders.reduceByKey((x, y) => x + y)
-
-    // Převedení RDD na kolekci.
-    val results = customerTotalSpent.collect()
-
-    // Výpis do konzole
-    results.foreach(println)
   }
 }

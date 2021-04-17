@@ -56,20 +56,5 @@ object Frozen {
     // Kód nad tímto komentářem nijak nemodifikujte
     // --------------------------------------------
 
-    // Změna vztahu mezi Annou a Hansem na nepřítelé
-    var newFrozen = frozen.mapTriplets((triplet) => if (triplet.srcAttr._1 == "Anna" && triplet.dstAttr._1 == "Hans") "Nepřátelé" else triplet.attr)
-    // Změna vztahu mezi Annou a Kristoffem na milenci
-    newFrozen = newFrozen.mapTriplets((triplet) => if (triplet.srcAttr._1 == "Anna" && triplet.dstAttr._1 == "Kristoff") "Milenci" else triplet.attr)
-    // Změnění Elsi z člověka na super hrdinu.
-    newFrozen = newFrozen.mapVertices((id, user_type) => if (id == 1) ("Elsa", "Superhrdina") else user_type)
-
-    // Vypsání nového grafu do konsole
-    for (triplet <- newFrozen.triplets.collect) {
-      print(triplet.srcAttr._1)
-      print(" is a ")
-      print(triplet.attr)
-      print(" of ")
-      println(triplet.dstAttr._1)
-    }
   }
 }
