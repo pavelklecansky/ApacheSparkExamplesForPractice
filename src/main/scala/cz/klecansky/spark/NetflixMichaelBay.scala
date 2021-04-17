@@ -24,7 +24,7 @@ object NetflixMichaelBay {
     Logger.getLogger("org").setLevel(Level.ERROR)
 
     // Vytvoření SparkSession
-    val spark = SparkSession.builder().appName("NetflixMovies").master("local[*]").getOrCreate()
+    val spark = SparkSession.builder().appName("NetflixMichaelBay").master("local[*]").getOrCreate()
 
     // Načtení filmů jako dataset
     import spark.implicits._
