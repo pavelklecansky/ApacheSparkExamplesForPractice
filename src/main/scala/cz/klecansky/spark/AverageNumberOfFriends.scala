@@ -14,7 +14,7 @@ import org.apache.spark._
  *
  * @author Pavel Klečanský
  * */
-object FriendsAverageAge {
+object AverageNumberOfFriends {
   def main(args: Array[String]): Unit = {
     // Změna na error jinak Spark při spuštění vypisuje obrovské množství info logů.
     Logger.getLogger("org").setLevel(Level.ERROR)
